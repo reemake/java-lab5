@@ -19,7 +19,7 @@ public class Injector {
     /** File that stores information about the properties of injected dependencies */
     private File data;
 
-    /** Constructor with parameters for an object of the Department class */
+    /** Constructor with parameters for an object of the Injector class */
     public Injector(String filePath) {
         this.data = new File(filePath);
     }
