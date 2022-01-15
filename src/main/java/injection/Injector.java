@@ -44,14 +44,14 @@ public class Injector {
         for (Field f: fields) {
             Annotation a = f.getAnnotation(AutoInjectable.class);
             f.setAccessible(true);
-            if (a != null)
-                if (f.getName().equals("field1"))
-                    f.set(newInstance, Class.forName(properties.getProperty("interfaces.FirstInterface")).newInstance());
-                else if (f.getName().equals("field2"))
-                    f.set(newInstance, Class.forName(properties.getProperty("interfaces.SecondInterface")).newInstance());
+            if (a != null) {
+                String typeName = properties.getProperty(f.getType().getName());
+                Object classObject = Class.forName(typeName).newInstance();
+                f.set(obj, classObject);
+            }
         }
 
-        return (T) newInstance;
+        return obj;
     }
 
 }
