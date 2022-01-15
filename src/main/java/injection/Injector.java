@@ -39,7 +39,6 @@ public class Injector {
         properties.load(new FileReader(data));
 
         Class objClass = obj.getClass();
-        Object newInstance = objClass.newInstance();
         Field[] fields = objClass.getDeclaredFields();
         for (Field f: fields) {
             Annotation a = f.getAnnotation(AutoInjectable.class);
